@@ -1,0 +1,70 @@
+<mat-card>
+  <!-- GET -->
+  <button mat-stroked-button (click)="onGetPosts()">Get - All posts</button>
+  <li *ngFor="let get of getPosts | async">
+    {{ get.userId }}
+    {{ get.id }}
+    {{ get.title }}
+    {{ get.body }}
+  </li>
+
+  <button mat-stroked-button (click)="onGetSpecificComments()">
+    Get - specific comments
+  </button>
+  <li *ngFor="let get of getComments | async">
+    {{ get.userId }}
+    {{ get.id }}
+    {{ get.title }}
+    {{ get.body }}
+  </li>
+
+  <button mat-stroked-button (click)="onGetUsers()">Get - users</button>
+  <li *ngFor="let get of getUsers | async">
+    {{ get.userId }}
+    {{ get.id }}
+    {{ get.title }}
+    {{ get.body }}
+  </li>
+
+  <button mat-stroked-button (click)="onGetUsersPosts()">
+    Get - users posts
+  </button>
+  <li *ngFor="let get of getUsersPosts | async">
+    {{ get.userId }}
+    {{ get.id }}
+    {{ get.title }}
+    {{ get.body }}
+  </li>
+
+  <br /><br />
+
+  <!-- POST -->
+  <button mat-stroked-button class="mat-warn" (click)="onPostPosts()">
+    Post - posts
+  </button>
+  {{ postPosts }}
+
+  <br /><br />
+
+  <!-- PUT -->
+  <button mat-stroked-button class="mat-warn" (click)="onPutPosts()">
+    Put - posts
+  </button>
+  {{ putPosts }}
+
+  <br /><br />
+
+  <!-- PATCH -->
+  <button mat-stroked-button class="mat-warn" (click)="onPatchPosts()">
+    Patch - posts
+  </button>
+  {{ patchPosts }}
+
+  <br /><br />
+
+  <!-- DELETE -->
+  <button mat-stroked-button class="mat-warn" (click)="onDeletePosts()">
+    Delete - posts
+  </button>
+  {{ deletePosts }}
+</mat-card>
