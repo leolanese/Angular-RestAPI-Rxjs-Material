@@ -1,4 +1,4 @@
-# Angular 9 + REST API + RxJS Observalbes and UI Material CRUD examples
+# Angular 9 + REST API + RxJS Observables and UI Material CRUD examples
 
 An [Angular 9](https://angular.io) application showing how to use a [REST(Restful)](https://en.wikipedia.org/wiki/Representational_state_transfer) [API](https://en.wikipedia.org/wiki/Application_programming_interface) with [observables](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).  
 Includes Angular v9+.
@@ -21,3 +21,36 @@ Whether you are authoring a web-based application in JavaScript or a server-side
 * Observable/throw
 * Operator/catch
 * Operator/map (Not anymore with HttpClient v4.3.2)
+
+
+---
+
+## Deployment
+
+```
+clone
+npm i 
+ng serve
+```
+
+---
+<h4> Thanks </h4>
+<h5> { 'Leo Lanese',<br>
+       'Building Inspiring Responsive Reactive Solutions',<br>
+       'London, UK' }<br>
+</h5>
+<h5>Twitter:
+<a href="http://twitter.com/LeoLaneseltd" target="_blank">twitter.com/LeoLaneseltd</a>
+</h5>
+<h5>Portfolio
+<a href="http://www.leolanese.com" target="_blank">http://www.leolanese.com</a>
+</h5>
+<h5>DEV.to:
+<a href="http://www.dev.to/leolanese" target="_blank">dev.to/leolanese</a>
+</h5>
+<h5>Blog:
+<a href="http://www.leolanese.com/blog" target="_blank">leolanese.com/blog</a>
+</h5>
+<h5>Questions / Suggestion / Recommendation ?
+<a href="mail:to">developer@leolanese.com</a>
+</h5>
