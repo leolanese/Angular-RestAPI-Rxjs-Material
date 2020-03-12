@@ -1,80 +1,74 @@
-<button mat-stroked-button (click)="onGetPosts()">Get - All posts</button>
+<div id="main">
+  <article>
+    <p>article</p>
 
-<cdk-virtual-scroll-viewport itemSize="5" class="example-viewport">
-  <div *cdkVirtualFor="let get of getPosts | async" class="list-group-item">
-    <div class="state">{{get.userId}}</div>
-    <div class="state">{{get.id}}</div>
-    <div class="state">{{get.title}}</div>
-    <div class="capital">{{get.body}}</div>
-  </div>
-</cdk-virtual-scroll-viewport>
+    <!-- GET -->
+    <button mat-stroked-button (click)="onGetPosts()">Get - All posts</button>
 
-<mat-card>
-<!-- GET -->
-<!--  <li *ngFor="let get of getPosts | async">-->
-<!--    {{ get.userId }}-->
-<!--    {{ get.id }}-->
-<!--    {{ get.title }}-->
-<!--    {{ get.body }}-->
-<!--  </li>-->
+    <!-- GET -->
+    <button mat-stroked-button (click)="onGetSpecificComments()">
+      Get - specific comments
+    </button>
 
-  <button mat-stroked-button (click)="onGetSpecificComments()">
-    Get - specific comments
-  </button>
-  <li *ngFor="let get of getComments | async">
-    {{ get.userId }}
-    {{ get.id }}
-    {{ get.title }}
-    {{ get.body }}
-  </li>
+    <!-- GET -->
+    <button mat-stroked-button (click)="onGetUsers()">Get - users</button>
 
-  <button mat-stroked-button (click)="onGetUsers()">Get - users</button>
-  <li *ngFor="let get of getUsers | async">
-    {{ get.userId }}
-    {{ get.id }}
-    {{ get.title }}
-    {{ get.body }}
-  </li>
+    <!-- GET -->
+    <button mat-stroked-button (click)="onGetUsersPosts()">
+      Get - users posts
+    </button>
 
-  <button mat-stroked-button (click)="onGetUsersPosts()">
-    Get - users posts
-  </button>
-  <li *ngFor="let get of getUsersPosts | async">
-    {{ get.userId }}
-    {{ get.id }}
-    {{ get.title }}
-    {{ get.body }}
-  </li>
+    <cdk-virtual-scroll-viewport itemSize="5" class="virtual-scroll">
+      <div *cdkVirtualFor="let get of getPosts | async; let i = index; trackBy: indexTrackFn" class="list-group-item">
+        <div class="state">{{get.userId}}</div>
+        <div class="state">{{get.id}}</div>
+        <div class="state">{{get.title}}</div>
+        <div class="capital">{{get.body}}</div>
+      </div>
+    </cdk-virtual-scroll-viewport>
 
-  <br /><br />
+    <mat-card>
+      <!-- POST -->
+      <button mat-stroked-button class="mat-warn" (click)="onPostPosts()">
+        Post - posts
+      </button>
+      {{ postPosts }}
 
-  <!-- POST -->
-  <button mat-stroked-button class="mat-warn" (click)="onPostPosts()">
-    Post - posts
-  </button>
-  {{ postPosts }}
+      <br /><br />
 
-  <br /><br />
+      <!-- PUT -->
+      <button mat-stroked-button class="mat-warn" (click)="onPutPosts()">
+        Put - posts
+      </button>
+      {{ putPosts }}
 
-  <!-- PUT -->
-  <button mat-stroked-button class="mat-warn" (click)="onPutPosts()">
-    Put - posts
-  </button>
-  {{ putPosts }}
+      <br /><br />
 
-  <br /><br />
+      <!-- PATCH -->
+      <button mat-stroked-button class="mat-warn" (click)="onPatchPosts()">
+        Patch - posts
+      </button>
+      {{ patchPosts }}
 
-  <!-- PATCH -->
-  <button mat-stroked-button class="mat-warn" (click)="onPatchPosts()">
-    Patch - posts
-  </button>
-  {{ patchPosts }}
+      <br /><br />
 
-  <br /><br />
+      <!-- DELETE -->
+      <button mat-stroked-button class="mat-warn" (click)="onDeletePosts()">
+        Delete - posts
+      </button>
+      {{ deletePosts }}
+    </mat-card>
 
-  <!-- DELETE -->
-  <button mat-stroked-button class="mat-warn" (click)="onDeletePosts()">
-    Delete - posts
-  </button>
-  {{ deletePosts }}
-</mat-card>
+    <p>Barleywine lagering dunkle. sparge. wit berliner weisse brew brewing heat exchanger? all-malt dunkle hand pump lauter tun shelf life. ibu, all-malt, hops anaerobic, specific gravity? cask conditioning, barley sparge sparge dry hopping hop back adjunct anaerobic; biere de garde. wheat beer glass black malt oxidized shelf life additive attenuation bacterial bung microbrewery.</p>
+  </article>
+
+  <nav>nav</nav>
+  <aside>aside</aside>
+</div>
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 import { throwError as observableThrowError, Observable } from 'rxjs';
 
-import { catchError, tap } from 'rxjs/operators';
+import {catchError, takeUntil, tap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -33,6 +33,7 @@ export class RestObservableService {
   getPosts(): Observable<any> {
     return this.http.get(this.proxyurl + this.baseUrl + '/posts', this.options).pipe(
       // With the new HttpClient: don't need to map to JSON anymore
+      tap(val => console.table(val)),
       catchError(this.handleError)
     );
   }
@@ -40,7 +41,10 @@ export class RestObservableService {
   getSpecificComments(): Observable<any> {
     return this.http
       .get(this.baseUrl + '/posts/3/comments', this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        tap(val => console.table(val)),
+        catchError(this.handleError),
+      );
   }
 
   getUsers(): Observable<any> {
@@ -50,10 +54,12 @@ export class RestObservableService {
   }
 
   getUsersPosts(): Observable<any> {
-    return this.http.get(this.baseUrl + '/users/1/posts', this.options).pipe(
-      tap(val => console.table(val)),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get(this.baseUrl + '/users/1/posts', this.options)
+      .pipe(
+        tap(val => console.table(val)),
+        catchError(this.handleError)
+      );
   }
 
   // POST

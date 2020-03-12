@@ -18,6 +18,7 @@ export class RestObservableComponent implements OnInit {
   patchPosts: string;
   deletePosts: string;
   errorMessage: string;
+  indexTrackFn = (index: number) => index;
 
   constructor(private restObservableService: RestObservableService) {}
 
@@ -29,15 +30,16 @@ export class RestObservableComponent implements OnInit {
   }
 
   onGetSpecificComments() {
-    this.getComments = this.restObservableService.getSpecificComments();
+    this.getPosts = this.restObservableService.getSpecificComments();
   }
 
   onGetUsers() {
-    this.getUsers = this.restObservableService.getUsers();
+    this.getPosts = this.restObservableService.getUsers();
   }
 
+  // POST
   onGetUsersPosts() {
-    this.getUsersPosts = this.restObservableService.getUsersPosts();
+    this.getPosts = this.restObservableService.getUsersPosts();
   }
 
   // POST
