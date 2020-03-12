@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RestObservableService } from './rest-observable.service';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rest-observable',
   templateUrl: './rest-observable.component.html',
-  styles: ['li { list-style-type: none; padding: 20px 0; }']
+  styleUrls: [ './rest-observable.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RestObservableComponent implements OnInit {
   getPosts: Observable<any>;
@@ -48,11 +49,6 @@ export class RestObservableComponent implements OnInit {
         title: 'new title',
         body: 'new body text'
       })
-      .subscribe(
-        data => (this.postPosts = JSON.stringify(data)),
-        error => (this.errorMessage = <any>error),
-        () => console.log('Post posts finished')
-      );
   }
 
   // PUT

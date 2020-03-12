@@ -1,12 +1,22 @@
+<button mat-stroked-button (click)="onGetPosts()">Get - All posts</button>
+
+<cdk-virtual-scroll-viewport itemSize="5" class="example-viewport">
+  <div *cdkVirtualFor="let get of getPosts | async" class="list-group-item">
+    <div class="state">{{get.userId}}</div>
+    <div class="state">{{get.id}}</div>
+    <div class="state">{{get.title}}</div>
+    <div class="capital">{{get.body}}</div>
+  </div>
+</cdk-virtual-scroll-viewport>
+
 <mat-card>
-  <!-- GET -->
-  <button mat-stroked-button (click)="onGetPosts()">Get - All posts</button>
-  <li *ngFor="let get of getPosts | async">
-    {{ get.userId }}
-    {{ get.id }}
-    {{ get.title }}
-    {{ get.body }}
-  </li>
+<!-- GET -->
+<!--  <li *ngFor="let get of getPosts | async">-->
+<!--    {{ get.userId }}-->
+<!--    {{ get.id }}-->
+<!--    {{ get.title }}-->
+<!--    {{ get.body }}-->
+<!--  </li>-->
 
   <button mat-stroked-button (click)="onGetSpecificComments()">
     Get - specific comments
