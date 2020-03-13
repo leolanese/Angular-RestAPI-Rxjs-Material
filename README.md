@@ -1,14 +1,15 @@
-# Angular 9 + REST API + RxJS Observables and UI Material CRUD examples
+# Angular Test implementation
 
-# Technologies Stack:
+# Technologies Stack deploy for this test:
 - Angular 9+ 
-- REST API 
+- Restful services 
 - RxJS 6+ 
 - Angular Material 9+
 - Angular CDK (Virtual scroll) 9+
 - SCSS
 - Responsive Layout using modern Flexbox
 - HTML5 semantic markup
+- Deployment using GIT (Github Repo)
 
 An [Angular 9](https://angular.io) application showing how to use a [REST(Restful)](https://en.wikipedia.org/wiki/Representational_state_transfer) [API](https://en.wikipedia.org/wiki/Application_programming_interface) with [observables](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).  
 Includes Angular v9+.
@@ -37,9 +38,9 @@ Whether you are authoring a web-based application in JavaScript or a server-side
 ## Deployment
 
 ```
-clone
+clone repo
 npm i 
-ng serve
+ng serve -o --progress=true
 ```
 
 ---

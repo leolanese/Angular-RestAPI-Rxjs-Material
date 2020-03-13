@@ -1,6 +1,6 @@
 <div id="main">
   <article>
-    <p>article</p>
+    <p>ARTICLE BEFORE</p>
 
     <!-- GET -->
     <button mat-raised-button (click)="onGetPosts()">Get - All posts</button>
@@ -19,11 +19,18 @@
     </button>
 
     <cdk-virtual-scroll-viewport itemSize="5" class="virtual-scroll">
-      <div *cdkVirtualFor="let get of getPosts | async; let i = index; trackBy: indexTrackFn" class="list-group-item">
-        <div class="state">{{get.userId}}</div>
-        <div class="state">{{get.id}}</div>
-        <div class="state">{{get.title}}</div>
-        <div class="capital">{{get.body}}</div>
+      <div
+        *cdkVirtualFor="
+          let get of getPosts | async;
+          let i = index;
+          trackBy: indexTrackFn
+        "
+        class="list-group-item"
+      >
+        <div class="state">{{ get.userId }}</div>
+        <div class="state">{{ get.id }}</div>
+        <div class="state">{{ get.title }}</div>
+        <div class="capital">{{ get.body }}</div>
       </div>
     </cdk-virtual-scroll-viewport>
 
@@ -59,21 +66,16 @@
       {{ deletePosts }}
     </mat-card>
 
-    <p>Barleywine lagering dunkle. sparge. wit berliner weisse brew brewing heat exchanger? all-malt dunkle hand pump lauter tun shelf life. ibu, all-malt, hops anaerobic, specific gravity? cask conditioning, barley sparge sparge dry hopping hop back adjunct anaerobic; biere de garde. wheat beer glass black malt oxidized shelf life additive attenuation bacterial bung microbrewery.</p>
+    <p>
+      ARTICLE AFTER
+    </p>
   </article>
 
   <nav>
-    nav
+    NAV
   </nav>
 
   <aside>
-    aside
+    ASIDE
   </aside>
 </div>
-
-
-
-
-
-
-

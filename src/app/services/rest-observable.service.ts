@@ -1,16 +1,17 @@
 import { throwError as observableThrowError, Observable } from 'rxjs';
 
-import {catchError, takeUntil, tap} from 'rxjs/operators';
+import { catchError, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OptionsInterface } from './../Models/options.interface';
 
 @Injectable()
 export class RestObservableService {
   headers: HttpHeaders;
-  options: any;
+  options: OptionsInterface;
 
-  baseUrl = 'https://jsonplaceholder.typicode.com';
-  proxyurl = 'https://cors-anywhere.herokuapp.com/';
+  readonly baseUrl = 'https://jsonplaceholder.typicode.com';
+  readonly proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders({
@@ -31,20 +32,19 @@ export class RestObservableService {
 
   // GET
   getPosts(): Observable<any> {
-    return this.http.get(this.proxyurl + this.baseUrl + '/posts', this.options).pipe(
-      // With the new HttpClient: don't need to map to JSON anymore
-      tap(val => console.table(val)),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get(this.proxyurl + this.baseUrl + '/posts', this.options)
+      .pipe(
+        tap(val => console.table(val)),
+        catchError(this.handleError)
+      );
   }
 
   getSpecificComments(): Observable<any> {
-    return this.http
-      .get(this.baseUrl + '/posts/3/comments', this.options)
-      .pipe(
-        tap(val => console.table(val)),
-        catchError(this.handleError),
-      );
+    return this.http.get(this.baseUrl + '/posts/3/comments', this.options).pipe(
+      tap(val => console.table(val)),
+      catchError(this.handleError)
+    );
   }
 
   getUsers(): Observable<any> {
@@ -54,12 +54,10 @@ export class RestObservableService {
   }
 
   getUsersPosts(): Observable<any> {
-    return this.http
-      .get(this.baseUrl + '/users/1/posts', this.options)
-      .pipe(
-        tap(val => console.table(val)),
-        catchError(this.handleError)
-      );
+    return this.http.get(this.baseUrl + '/users/1/posts', this.options).pipe(
+      tap(val => console.table(val)),
+      catchError(this.handleError)
+    );
   }
 
   // POST
