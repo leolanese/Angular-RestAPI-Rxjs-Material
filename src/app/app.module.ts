@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { RestObservableComponent } from './rest-observable/rest-observable.component';
-import { RestObservableService } from './rest-observable/rest-observable.service';
+import { RestObservableService } from './services/rest-observable.service';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRippleModule } from '@angular/material/core';

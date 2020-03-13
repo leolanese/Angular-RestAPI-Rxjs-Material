@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { RestObservableService } from './rest-observable.service';
+import { RestObservableService } from '../services/rest-observable.service';
 import { Observable } from 'rxjs';
 
 @Component({

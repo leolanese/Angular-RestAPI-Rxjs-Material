@@ -1,13 +1,13 @@
 # Angular 9 + REST API + RxJS Observables and UI Material CRUD examples
 
 # Technologies Stack:
-- Angular 9 
+- Angular 9+ 
 - REST API 
-- RxJS Observables 
-- Angular Material 
-- Angular CDK (Virtual scroll)
+- RxJS 6+ 
+- Angular Material 9+
+- Angular CDK (Virtual scroll) 9+
 - SCSS
-- CSS3 FLEX
+- Responsive Layout using modern Flexbox
 - HTML5 semantic markup
 
 An [Angular 9](https://angular.io) application showing how to use a [REST(Restful)](https://en.wikipedia.org/wiki/Representational_state_transfer) [API](https://en.wikipedia.org/wiki/Application_programming_interface) with [observables](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html).  

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 html,
@@ -11,4 +11,14 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+header, footer {
+  display: block;
+  margin: 4px;
+  padding: 5px;
+  min-height: 80px;
+  border: 1px solid #000;
+  border-radius: 7pt;
+  background-color: lightslategrey;
 }
