@@ -3,7 +3,7 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError, takeUntil, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { OptionsInterface } from './../Models/options.interface';
+import { ErrorRequestModel, OptionsInterface } from './../Models/options.interface';
 
 @Injectable()
 export class RestObservableService {
@@ -21,12 +21,13 @@ export class RestObservableService {
     this.options = { headers: this.headers };
   }
 
-  private handleError(error: any) {
-    const errMsg = error.message
-      ? error.message
-      : error.status
-      ? `${error.status} - ${error.statusText}`
-      : 'Server error';
+  private handleError(error:  ErrorRequestModel) {
+    const {statusText, message, status}: ErrorRequestModel = error;
+    const errMsg = message
+      ? message
+      : status
+        ? `${status} - ${statusText}`
+        : 'Server error';
     return observableThrowError(errMsg);
   }
 
