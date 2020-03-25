@@ -1,9 +1,9 @@
 import { throwError as observableThrowError, Observable } from 'rxjs';
 
-import { catchError, takeUntil, tap } from 'rxjs/operators';
+import {catchError, retry, takeUntil, tap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ErrorRequestModel, OptionsInterface } from './../Models/options.interface';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { OptionsInterface } from './../Models/options.interface';
 
 @Injectable()
 export class RestObservableService {
@@ -21,12 +21,12 @@ export class RestObservableService {
     this.options = { headers: this.headers };
   }
 
-  private handleError(error:  ErrorRequestModel) {
-    const {statusText, message, status}: ErrorRequestModel = error;
+  private handleError(error: HttpErrorResponse) {
+    const { statusText, message, status }: HttpErrorResponse = error;
     const errMsg = message
       ? message
       : status
-        ? `${status} - ${statusText}`
+        ? `Server returned code: ${status}, error message is: ${statusText}`
         : 'Server error';
     console.count(statusText);
     return observableThrowError(errMsg);
@@ -39,28 +39,36 @@ export class RestObservableService {
       .get(this.proxyurl + this.baseUrl + '/posts', this.options)
       .pipe(
         tap(val => console.table(val)),
+        retry(1),
         catchError(this.handleError)
       );
   }
 
   getSpecificComments(): Observable<any> {
-    return this.http.get(this.baseUrl + '/posts/3/comments', this.options).pipe(
-      tap(val => console.table(val)),
-      catchError(this.handleError)
-    );
+    return this.http.get(this.baseUrl + '/posts/3/comments', this.options)
+      .pipe(
+        tap(val => console.table(val)),
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   getUsers(): Observable<any> {
     return this.http
       .get(this.baseUrl + '/users', this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   getUsersPosts(): Observable<any> {
-    return this.http.get(this.baseUrl + '/users/1/posts', this.options).pipe(
-      tap(val => console.table(val)),
-      catchError(this.handleError)
-    );
+    return this.http.get(this.baseUrl + '/users/1/posts', this.options)
+      .pipe(
+        tap(val => console.table(val)),
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   // POST
@@ -68,7 +76,10 @@ export class RestObservableService {
     const body = JSON.stringify(param);
     return this.http
       .post(this.baseUrl + '/posts', body, this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   // PUT
@@ -76,7 +87,10 @@ export class RestObservableService {
     const body = JSON.stringify(param);
     return this.http
       .put(this.baseUrl + '/posts/1', body, this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   // PATCH
@@ -84,13 +98,19 @@ export class RestObservableService {
     const body = JSON.stringify(param);
     return this.http
       .patch(this.baseUrl + '/posts/2', body, this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   // DELETE
   deletePosts(): Observable<any> {
     return this.http
       .delete(this.baseUrl + '/posts/1', this.options)
-      .pipe(catchError(this.handleError));
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 }
