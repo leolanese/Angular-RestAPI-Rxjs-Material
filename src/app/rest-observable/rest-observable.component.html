@@ -19,7 +19,7 @@
     </button>
 
     <cdk-virtual-scroll-viewport itemSize="5" class="virtual-scroll">
-      <div>
+      <div class="component-wrapper">
         <dl class="component-dl">
           <ng-container
             *cdkVirtualFor="
@@ -28,11 +28,13 @@
               let i = index;
               trackBy: indexTrackFn"
           >
-            <dt class="component-dt">{{get.userId }}</dt>
-            <dd class="component-dt">{{get.id }}</dd>
-            <dd class="component-dt-dd">{{get.title}}</dd>
-            <dd class="component-dt">{{get.body}}</dd>
-            <dd class="component-dt">{{get.name}}</dd>
+            <div class="component-inner-wrapper">
+              <dt class="component-dt component-border">{{get.userId }}</dt>
+              <dd class="component-dt">{{get.id }}</dd>
+              <dd class="component-dt-dd">{{get.title}}</dd>
+              <dd class="component-dt">{{get.body}}</dd>
+              <dd class="component-dt">{{get.name}}</dd>
+            </div>
           </ng-container>
         </dl>
       </div>

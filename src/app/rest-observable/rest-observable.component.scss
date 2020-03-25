@@ -60,6 +60,15 @@ figure img {
   height: 30px;
 }
 
+.component-wrapper {
+  padding: 15px;
+  border: 1px solid cadetblue;
+  margin: 15px;
+}
+.component-inner-wrapper {
+  border: 1px solid cadetblue;
+  border-bottom: 0;
+}
 
 #main {
   margin: 0;
