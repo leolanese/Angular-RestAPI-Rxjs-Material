@@ -19,18 +19,22 @@
     </button>
 
     <cdk-virtual-scroll-viewport itemSize="5" class="virtual-scroll">
-      <div
-        *cdkVirtualFor="
-          let get of getAllPosts | async;
-          let i = index;
-          trackBy: indexTrackFn
-        "
-        class="list-group-item"
-      >
-        <div class="state">{{ get.userId }}</div>
-        <div class="state">{{ get.id }}</div>
-        <div class="state">{{ get.title }}</div>
-        <div class="capital">{{ get.body }}</div>
+      <div>
+        <dl class="component-dl">
+          <ng-container
+            *cdkVirtualFor="
+              let get of getAllPosts | async;
+              templateCacheSize: 5;
+              let i = index;
+              trackBy: indexTrackFn"
+          >
+            <dt class="component-dt">{{get.userId }}</dt>
+            <dd class="component-dt">{{get.id }}</dd>
+            <dd class="component-dt-dd">{{get.title}}</dd>
+            <dd class="component-dt">{{get.body }}</dd>
+            <dd class="component-dt">{{get.name || 'Loading...'}}</dd>
+          </ng-container>
+        </dl>
       </div>
     </cdk-virtual-scroll-viewport>
 
