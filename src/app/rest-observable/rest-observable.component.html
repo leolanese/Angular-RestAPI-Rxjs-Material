@@ -3,7 +3,7 @@
     <p>ARTICLE BEFORE</p>
 
     <!-- GET -->
-    <button mat-raised-button (click)="onGetPosts()">Get - All posts</button>
+    <button mat-raised-button (click)="onGetAllPosts()">Get - All posts</button>
 
     <!-- GET -->
     <button mat-raised-button (click)="onGetSpecificComments()">
@@ -21,7 +21,7 @@
     <cdk-virtual-scroll-viewport itemSize="5" class="virtual-scroll">
       <div
         *cdkVirtualFor="
-          let get of getPosts | async;
+          let get of getAllPosts | async;
           let i = index;
           trackBy: indexTrackFn
         "

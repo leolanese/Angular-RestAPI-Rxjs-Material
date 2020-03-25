@@ -28,11 +28,13 @@ export class RestObservableService {
       : status
         ? `${status} - ${statusText}`
         : 'Server error';
+    console.count(statusText);
     return observableThrowError(errMsg);
   }
 
   // GET
-  getPosts(): Observable<any> {
+  getAllPosts(): Observable<any> {
+    console.count('getAllPosts');
     return this.http
       .get(this.proxyurl + this.baseUrl + '/posts', this.options)
       .pipe(

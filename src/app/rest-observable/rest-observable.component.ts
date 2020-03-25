@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { RestObservableService } from "../services/rest-observable.service";
-import { Observable } from "rxjs";
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RestObservableService } from '../services/rest-observable.service';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-rest-observable",
-  templateUrl: "./rest-observable.component.html",
-  styleUrls: ["./rest-observable.component.scss"],
+  selector: 'app-rest-observable',
+  templateUrl: './rest-observable.component.html',
+  styleUrls: ['./rest-observable.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestObservableComponent implements OnInit {
-  getPosts: Observable<any>;
+  getAllPosts: Observable<any>;
   getComments: Observable<any>;
   getUsers: Observable<any>;
   getUsersPosts: Observable<any>;
@@ -25,30 +25,30 @@ export class RestObservableComponent implements OnInit {
   ngOnInit() {}
 
   // GET
-  onGetPosts() {
-    this.getPosts = this.restObservableService.getPosts();
+  onGetAllPosts() {
+    this.getAllPosts = this.restObservableService.getAllPosts();
   }
 
   onGetSpecificComments() {
-    this.getPosts = this.restObservableService.getSpecificComments();
+    this.getAllPosts = this.restObservableService.getSpecificComments();
   }
 
   onGetUsers() {
-    this.getPosts = this.restObservableService.getUsers();
+    this.getAllPosts = this.restObservableService.getUsers();
   }
 
   // POST
   onGetUsersPosts() {
-    this.getPosts = this.restObservableService.getUsersPosts();
+    this.getAllPosts = this.restObservableService.getUsersPosts();
   }
 
   // POST
   onPostPosts() {
     this.restObservableService.postPosts({
-      userId: "49",
-      id: "48",
-      title: "new title",
-      body: "new body text"
+      userId: '49',
+      id: '48',
+      title: 'new title',
+      body: 'new body text'
     });
   }
 
@@ -56,15 +56,15 @@ export class RestObservableComponent implements OnInit {
   onPutPosts() {
     this.restObservableService
       .putPosts({
-        userId: "23",
-        id: "9",
-        title: "new title 2",
-        body: "new body text 2"
+        userId: '23',
+        id: '9',
+        title: 'new title 2',
+        body: 'new body text 2'
       })
       .subscribe(
         data => (this.putPosts = JSON.stringify(data)),
         error => (this.errorMessage = <any>error),
-        () => console.log("Put posts finished")
+        () => console.log('Put posts finished')
       );
   }
 
@@ -72,15 +72,15 @@ export class RestObservableComponent implements OnInit {
   onPatchPosts() {
     this.restObservableService
       .patchPosts({
-        userId: "43",
-        id: "12",
-        title: "new title 3",
-        body: "new body text 3"
+        userId: '43',
+        id: '12',
+        title: 'new title 3',
+        body: 'new body text 3'
       })
       .subscribe(
         data => (this.patchPosts = JSON.stringify(data)),
         error => (this.errorMessage = <any>error),
-        () => console.log("Patch posts finished")
+        () => console.log('Patch posts finished')
       );
   }
 
@@ -89,7 +89,7 @@ export class RestObservableComponent implements OnInit {
     this.restObservableService.deletePosts().subscribe(
       data => (this.deletePosts = JSON.stringify(data)),
       error => (this.errorMessage = <any>error),
-      () => console.log("Delete post finished")
+      () => console.log('Delete post finished')
     );
   }
 }
