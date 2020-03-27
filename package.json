@@ -9,7 +9,13 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "ng serve --port 4600",
+    "start:development": "node --max-old-space-size=8192 node_modules/@angular/cli/bin/ng serve --c development",
+    "build": "ng build",
+    "prettier": "prettier --write --list-different **/*.ts",
+    "tslint": "tslint --config ./tslint.json '**/*.ts' -e 'node_modules/**' -e '**/*.spec.ts' -e '**/*.d.ts' -e '**/polyfills.ts' ",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "private": true,
   "dependencies": {
